@@ -80,7 +80,32 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass  # TODO
+        # make queue
+        # make visited set()
+        # enqueue the path to the vertex
+        # while the queue isn't empty:
+            # dequeue 
+            # last item in path is current item
+            # if the vertex not visited
+                # check if it is the destination_vertex
+                    # return path
+                # for each vertex connections
+                    # copy the path
+                    # enqueue the path copy
+        qq = Queue()
+        visited = set()
+        qq.enqueue([starting_vertex])
+        while qq.size() > 0:
+            path = qq.dequeue()
+            vertex = path[-1]
+            if vertex not in visited:
+                if vertex == destination_vertex:
+                    return path
+                for connection in self.vertices[vertex]:
+                    copy_path = path[:]
+                    copy_path.append(connection)
+                    qq.enqueue(copy_path)
+
     def dfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing a path from
@@ -162,6 +187,7 @@ if __name__ == '__main__':
     Valid BFS path:
         [1, 2, 4, 6]
     '''
+    print("bfs")
     print(graph.bfs(1, 6))
 
     '''
@@ -169,4 +195,5 @@ if __name__ == '__main__':
         [1, 2, 4, 6]
         [1, 2, 4, 7, 6]
     '''
+    print("dfs")
     print(graph.dfs(1, 6))
