@@ -62,17 +62,27 @@ class Graph:
                 for next_vert in self.vertices[vertex]:
                     stack.push(next_vert)
 
-    def dft_recursive(self, vertex, visited=set()):
+    def dft_recursive(self, starting_vertex, visited=set()):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         This should be done using recursion.
         """
-        if vertex not in visited:
-            visited.add(vertex)
-            print(vertex)
-            for starting_vertex in self.vertices[vertex]:
-                self.dft_recursive(starting_vertex, visited)
+        # if the vertex is not in visited
+            # add to visited
+            # at the starting_vertex in vertices
+                # run dft_recursive(starting_vertex, visited)
+        if starting_vertex not in visited:
+            visited.add(starting_vertex)
+            print(starting_vertex)
+            for edge in self.vertices[starting_vertex]:
+                self.dft_recursive(edge, visited)
+
+        # visited.add(starting_vertex)
+        # print(starting_vertex)
+        # for edge in self.vertices[starting_vertex]:
+        #     if edge not in visited:
+        #         self.dft_recursive(edge, visited)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -97,11 +107,11 @@ class Graph:
         qq.enqueue([starting_vertex])
         while qq.size() > 0:
             path = qq.dequeue()
-            vertex = path[-1]
-            if vertex not in visited:
-                if vertex == destination_vertex:
+            node = path[-1]
+            if node not in visited:
+                if node == destination_vertex:
                     return path
-                for connection in self.vertices[vertex]:
+                for connection in self.vertices[node]:
                     copy_path = path[:]
                     copy_path.append(connection)
                     qq.enqueue(copy_path)
@@ -112,7 +122,19 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        stack = Stack()
+        visited = set()
+        stack.push([starting_vertex])
+        while stack.size() > 0:
+            path = stack.pop()
+            node = path[-1]
+            if node not in visited:
+                if node == destination_vertex:
+                    return path
+                for connection in self.vertices[node]:
+                    copy_path = path[:]
+                    copy_path.append(connection)
+                    stack.push(copy_path)
 
 
 
