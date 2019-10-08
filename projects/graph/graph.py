@@ -88,7 +88,7 @@ class Graph:
         # if visited is None:
         #     visited = set()
         # print(starting_vertex)
-        # visited.add(starting_vertex)
+        # visited.add
         # for child_vertex in self.vertices[starting_vertex]:
         #     if child_vertex not in visited:
         #         self.dft_recursive(child_vertex, visited)
@@ -116,14 +116,30 @@ class Graph:
         qq.enqueue([starting_vertex])
         while qq.size() > 0:
             path = qq.dequeue()
-            node = path[-1]
-            if node not in visited:
-                if node == destination_vertex:
+            vertex = path[-1]
+            if vertex not in visited:
+                if vertex == destination_vertex:
                     return path
-                for connection in self.vertices[node]:
+                for connection in self.vertices[vertex]:
                     copy_path = path[:]
                     copy_path.append(connection)
                     qq.enqueue(copy_path)
+
+        ###### Class Solution #########
+        # qq = Queue()
+        # visited = set()
+        # qq.enqueue([starting_vertex])
+        # while qq.size() > 0:
+        #     path = qq.dequeue()
+        #     vertex = path[-1]
+        #     if vertex not in visited:
+        #         if vertex == destination_vertex:
+        #             return path
+        #         visited.add(vertex)
+        #         for next_vert in self.vertices[vertex]:
+        #             new_path = list(path)
+        #             new_path.append(next_vert)
+        #             qq.enqueue(new_path)
 
     def dfs(self, starting_vertex, destination_vertex):
         """
@@ -136,11 +152,11 @@ class Graph:
         stack.push([starting_vertex])
         while stack.size() > 0:
             path = stack.pop()
-            node = path[-1]
-            if node not in visited:
-                if node == destination_vertex:
+            vertex = path[-1]
+            if vertex not in visited:
+                if vertex == destination_vertex:
                     return path
-                for connection in self.vertices[node]:
+                for connection in self.vertices[vertex]:
                     copy_path = path[:]
                     copy_path.append(connection)
                     stack.push(copy_path)
