@@ -73,8 +73,8 @@ class Graph:
             # at the starting_vertex in vertices
                 # run dft_recursive(starting_vertex, visited)
         if starting_vertex not in visited:
-            visited.add(starting_vertex)
             print(starting_vertex)
+            visited.add(starting_vertex)
             for edge in self.vertices[starting_vertex]:
                 self.dft_recursive(edge, visited)
 
@@ -83,6 +83,15 @@ class Graph:
         # for edge in self.vertices[starting_vertex]:
         #     if edge not in visited:
         #         self.dft_recursive(edge, visited)
+
+        ###### Class Solution #######
+        # if visited is None:
+        #     visited = set()
+        # print(starting_vertex)
+        # visited.add(starting_vertex)
+        # for child_vertex in self.vertices[starting_vertex]:
+        #     if child_vertex not in visited:
+        #         self.dft_recursive(child_vertex, visited)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
