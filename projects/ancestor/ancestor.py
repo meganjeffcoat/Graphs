@@ -30,7 +30,6 @@ def earliest_ancestor(ancestors, starting_node):
             graph[pair[1]] = [pair[0]]
         
     stack = Stack()
-    result = starting_node
     visited = set()
     stack.push([starting_node])
     a_len = 0
@@ -46,10 +45,10 @@ def earliest_ancestor(ancestors, starting_node):
                 new_path.append(parent)
                 stack.push(new_path)
                 if new_path == 0:
-                    result = min(result, parent)
+                    starting_node = min(starting_node, parent)
                 elif len(new_path) > a_len:
-                    result = parent
+                    starting_node = parent
                     a_len = len(new_path)
-    return result
+    return starting_node
 
     
