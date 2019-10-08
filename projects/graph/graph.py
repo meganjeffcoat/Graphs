@@ -161,6 +161,22 @@ class Graph:
                     copy_path.append(connection)
                     stack.push(copy_path)
 
+                ###### Class Solution #########
+        # stack = Stack()
+        # visited = set()
+        # stack.push([starting_vertex])
+        # while stack.size() > 0:
+        #     path = stack.pop()
+        #     vertex = path[-1]
+        #     if vertex not in visited:
+        #         if vertex == destination_vertex:
+        #             return path
+        #         visited.add(vertex)
+        #         for next_vert in self.vertices[vertex]:
+        #             new_path = list(path)
+        #             new_path.append(next_vert)
+        #             stack.push(new_path)
+
 
 
 
